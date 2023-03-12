@@ -7,8 +7,7 @@
 <body>
     <h1>{{ $title }}</h1>
     <p>{{ $date }}</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua.</p>
+    <p></p>
   
     @foreach($info as $informacion)
     <h5>Total Personas</h5>

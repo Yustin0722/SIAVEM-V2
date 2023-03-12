@@ -49,19 +49,18 @@ class EmpleadoController extends Controller
         $countDos = count($empleadosLicenciaVencida);
         for ($a = 0; $a < $countDos; $a++) {
 
-            $correo = $empleadosLicenciaVencida[$a]['CorreoInstitucional'];
+            $email = $empleadosLicenciaVencida[$a]['CorreoInstitucional'];
             $cedula = $empleadosLicenciaVencida[$a]['Cedula'];
             $nombre = $empleadosLicenciaVencida[$a]['NombreEmple'];
             $apellido1 = $empleadosLicenciaVencida[$a]['Apellido1'];
             $apellido2 = $empleadosLicenciaVencida[$a]['Apellido2'];
             $fecha = $empleadosLicenciaVencida[$a]['FechaVencimiento'];
 
-            $details=[
-                'tittle' => 'Aviso licencias pronto a vencer',
-                'body' => "Estimado $nombre $apellido1 $apellido2 con cedula $cedula le avisamos que su licencia esta pronto a vencer, su fecha de vencimiento es $fecha."
-            ];
 
-            Mail::to($correo)->send(new avisoLicenciaMail($details));
+            $messages = "Estimado $nombre $apellido1 $apellido2 con cedula $cedula le avisamos que su licencia esta pronto a vencer, su fecha de vencimiento es $fecha.";
+    
+            Mail::to($email)->send(new avisoLicenciaMail($email,$messages));
+
         }
 
         return redirect()->route('empleados.index')
@@ -98,7 +97,7 @@ class EmpleadoController extends Controller
 
             $file = $request->file('FotoLicencia');
             $filename = "$request->Cedula.png"; 
-            $file->storeAs('public/empleado', $filename);
+            $file->storeAs('/empleado/', $filename);
 
             $empleado ['FotoLicencia'] = $filename;
             
@@ -154,8 +153,12 @@ class EmpleadoController extends Controller
 
        $currentFoto = $empleado->imagen;
 
-       $file_path = storage_path().'/app/public/empleado/'.$empleado->FotoLicencia;
-
+       $file_path = public_path().'/empleado/'.$empleado->FotoLicencia;
+       if($request->FotoLicencia == ""){
+        if (file_exists($file_path) && $empleado->FotoLicencia != "") {
+            unlink($file_path);
+        }
+       }
        if($request->FotoLicencia != $currentFoto){
         
         if (file_exists($file_path) && $empleado->FotoLicencia != "") {
@@ -164,7 +167,7 @@ class EmpleadoController extends Controller
 
         $file = $request->file('FotoLicencia');
         $filename = "$empleado->Cedula.png"; 
-        $file->storeAs('public/empleado', $filename);
+        $file->storeAs('/empleado/', $filename);
 
             
      }

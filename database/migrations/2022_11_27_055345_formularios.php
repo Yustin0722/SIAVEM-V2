@@ -29,8 +29,8 @@ return new class extends Migration
             $table->string('Itinerario');
             $table->string('Observaciones')->nullable();
             $table->string('chofer')->nullable();
-            $table->boolean('estado');
-            $table->string('placa');
+            $table->boolean('estado')->nullable();//permite que vaya null
+            $table->string('placa')->nullable();
             $table->string('token');
             $table->timestamps();
              $table->foreign('categoria_id')->references('id')->on('categorias'); 

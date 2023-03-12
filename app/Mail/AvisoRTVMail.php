@@ -11,16 +11,18 @@ class AvisoRTVMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $details;
+    public $email;
+    public $messages;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($details)
+    public function __construct($email,$messages)
     {
-        $this->details = $details;
+        $this->email = $email;
+        $this->messages = $messages;
     }
 
     /**
@@ -30,6 +32,8 @@ class AvisoRTVMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Aviso RTV')->view('Emails.avisoRTV');
+        return $this
+        ->subject('Aviso RTV')
+        ->markdown('Emails.avisoRTV');
     }
 }

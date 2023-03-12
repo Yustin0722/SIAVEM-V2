@@ -5,6 +5,15 @@
 @endsection
 
 @section('content')
+<style>
+    span{
+        color: black;
+            font-weight: bold;
+        display: flex;
+        justify-content: center;
+            align-items: center;
+    }
+</style>
     <section class="content container-fluid">
         <div class="row">
             <div class="col-md-12">
