@@ -7,13 +7,13 @@
         </div>
 
         <div class="form-group">
-            {{ Form::label('Objetivo') }}
+            {{ Form::label('Objetivo de la gira') }}
             {{ Form::text('Objetivo', $formulario->Objetivo, ['class' => 'form-control' . ($errors->has('Objetivo') ? ' is-invalid' : ''), 'placeholder' => 'Escriba el objetivo de la gira']) }}
             {!! $errors->first('Objetivo', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
         <div class="form-group">
-            {{ Form::label('Numero Personas') }}
+            {{ Form::label('Nombre completo acompañantes') }}
             {{ Form::text('NumePersonas', $formulario->NumePersonas, ['class' => 'form-control' . ($errors->has('NumePersonas') ? ' is-invalid' : ''), 'placeholder' => 'Numero de personas']) }}
             {!! $errors->first('NumePersonas', '<div class="invalid-feedback">:message</div>') !!}
         </div>
@@ -58,12 +58,6 @@
         </div>
 
         <div class="form-group">
-            {{ Form::label('Itinerario') }}
-            {{ Form::text('Itinerario', $formulario->Itinerario, ['class' => 'form-control' . ($errors->has('Itinerario') ? ' is-invalid' : ''), 'placeholder' => 'Itinerario']) }}
-            {!! $errors->first('Itinerario', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-
-        <div class="form-group">
             {{ Form::label('chofer') }}
             {{ Form::select('chofer',$empleados  ,$formulario->chofer, ['class' => 'form-control' . ($errors->has('chofer') ? ' is-invalid' : ''), 'placeholder' => 'Seleccione']) }}
             {!! $errors->first('chofer', '<div class="invalid-feedback">:message</div>') !!}
@@ -73,7 +67,13 @@
             {{ Form::text('Observaciones', $formulario->Observaciones, ['class' => 'form-control' . ($errors->has('Observaciones') ? ' is-invalid' : ''), 'placeholder' => 'Observaciones']) }}
             {!! $errors->first('Observaciones', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+        
+<br>
 
+            <label for="Autorizacion">Autorizacion: </label>
+                            <img src="{{ asset('storage').'/'.$formulario->Autorizacion }}" width="300" alt="">
+                            <input type="file" name="Autorizacion" value="" id="Autorizacion">
+                        </div>
     </div>
    </br>
     <div class="box-footer mt20">

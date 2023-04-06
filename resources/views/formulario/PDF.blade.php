@@ -23,8 +23,8 @@
     <span>{{ $informacion->HoraR }}</span><br>
     <h5>Lugar</h5>
     <span>{{ $informacion->Lugar }}</span><br>
-    <h5>Itinerario</h5>
-    <span>{{ $informacion->Itinerario }}</span>
+    <h5>Autorizacion</h5>
+    <span>{{ $informacion->Autorizacion }}</span>
     <br>
     @endforeach
   

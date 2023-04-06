@@ -6,6 +6,6 @@
 {{$messages}}
 
 
-Thanks,<br>
+Gracias,<br>
 {{ config('app.name') }}
 @endcomponent

@@ -45,7 +45,7 @@
 										<th>Fecha Salida</th>
 										<th>Fecha Regreso</th>
 										<th>Lugar</th>
-										<th>Itinerario</th>
+										<th>Autorizacion </th>
                                         <th>Chofer</th>
 										<th>Observaciones</th>
                                         <th>Estado</th>
@@ -68,7 +68,10 @@
 											<td>{{ $formulario->FechaSalida }}</td>
 											<td>{{ $formulario->FechaRegreso }}</td>
 											<td>{{ $formulario->Lugar }}</td>
-											<td>{{ $formulario->Itinerario }}</td>
+                                            <td>
+                                            <img src="{{ asset('formulario/'.$formulario->Autorizacion) }}" width="150" alt="" title="" />
+                                            </td>
+											
                                             <td>{{ $formulario->empleado->Cedula }}</td>
 											<td>{{ $formulario->Observaciones }}</td>
                                             @if($formulario->estado == 1)

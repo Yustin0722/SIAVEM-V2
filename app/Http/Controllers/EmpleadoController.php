@@ -96,7 +96,7 @@ class EmpleadoController extends Controller
 
 
             $file = $request->file('FotoLicencia');
-            $filename = "$request->Cedula.png"; 
+            $filename = "$request->Cedula.png"; // revisar
             $file->storeAs('/empleado/', $filename);
 
             $empleado ['FotoLicencia'] = $filename;

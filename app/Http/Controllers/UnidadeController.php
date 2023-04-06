@@ -145,7 +145,7 @@ class UnidadeController extends Controller
      * @throws \Exception
      */
     public function destroy($id)
-    {
+    { // validacion para evitar 
         $preventivo = Preventivo::where('unidad_id',$id)->get();
         $correctivo = Correctivo::where('unidad_id',$id)->get();
         if($preventivo->isEmpty() && $correctivo->isEmpty()){

@@ -65,8 +65,8 @@
                             {{ $formulario->Lugar }}
                         </div>
                         <div class="form-group">
-                            <strong>Itinerario:</strong>
-                            {{ $formulario->Itinerario }}
+                            <strong>Autorizacion:</strong>
+                            {{ $formulario->Autorizacion }}
                         </div>
                         <div class="form-group">
                             <strong>Observaciones:</strong>
