@@ -26,16 +26,17 @@ return new class extends Migration
             $table->time('HoraS');
             $table->time('HoraR');
             $table->string('Lugar');
-            $table->string('Itinerario');
+            $table->string('Autorizacion')->nullable(); // eliminar itinerario
             $table->string('Observaciones')->nullable();
-            $table->string('chofer')->nullable();
-            $table->boolean('estado');
-            $table->string('placa');
+            $table->string('chofer');
+            $table->boolean('estado')->nullable();;
+            $table->string('placa')->nullable();;
             $table->string('token');
             $table->timestamps();
-             $table->foreign('categoria_id')->references('id')->on('categorias'); 
+            $table->foreign('categoria_id')->references('id')->on('categorias'); 
             $table->foreign('depar_id')->references('idDepartamento')->on('departamentos');
             $table->foreign('emple_id')->references('idEmpleados')->on('empleados');
+
              
         });
     }

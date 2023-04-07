@@ -52,13 +52,10 @@ class UnidadeController extends Controller
 
             $placa = $unidadesRTVVencido[$a]['placa'];
             $fecha = $unidadesRTVVencido[$a]['RVT'];
-
-            $details=[
-                'tittle' => 'Aviso RTV',
-                'body' => "La unidad placa $placa se vence el rtv en la fecha $fecha."
-            ];
-            //cambiar el correo por el de la muni
-            Mail::to('yustinlopez22@gmail.com')->send(new AvisoRTVMail($details));
+            $email = "da598298@gmail.com";
+            $messages = "La unidad placa $placa se vence el rtv en la fecha $fecha.";
+    
+            Mail::to($email)->send(new AvisoRTVMail($email,$messages));
         }
 
         return redirect()->route('unidades.index')
@@ -148,7 +145,7 @@ class UnidadeController extends Controller
      * @throws \Exception
      */
     public function destroy($id)
-    {
+    { // validacion para evitar 
         $preventivo = Preventivo::where('unidad_id',$id)->get();
         $correctivo = Correctivo::where('unidad_id',$id)->get();
         if($preventivo->isEmpty() && $correctivo->isEmpty()){

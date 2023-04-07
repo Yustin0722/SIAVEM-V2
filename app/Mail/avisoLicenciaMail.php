@@ -11,18 +11,19 @@ class avisoLicenciaMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $details;
+    public $email;
+    public $messages;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($details)
+    public function __construct($email,$messages)
     {
-        $this->details = $details;
+        $this->email = $email;
+        $this->messages = $messages;
     }
-
     /**
      * Build the message.
      *
@@ -30,6 +31,8 @@ class avisoLicenciaMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Aviso licencias pronto a vencer')->view('Emails.avisoLicencia');
+        return $this
+        ->subject('Aviso licencias pronto a vencer')
+        ->markdown('Emails.avisoLicencia');
     }
 }

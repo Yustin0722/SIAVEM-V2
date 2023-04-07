@@ -11,16 +11,20 @@ class GiraMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $details;
+    public $email;
+    public $newLink;
+    public $messages;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($details)
+    public function __construct($email,$messages,$newLink)
     {
-        $this->details = $details;
+        $this->newLink = $newLink;
+        $this->email = $email;
+        $this->messages = $messages;
     }
 
     /**
@@ -30,6 +34,8 @@ class GiraMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Solicitud Gira')->view('Emails.SolicitudGira');
+        return $this
+        ->subject('Solicitud Gira')
+        ->markdown('Emails.SolicitudGira');
     }
 }

@@ -25,15 +25,17 @@ return new class extends Migration
             $table->string('Cedula');
             $table->string('Telefono');
             $table->string('CorreoInstitucional');
-             $table->bigInteger('TL_id')->unsigned()->nullable();
-            $table->date('FechaVencimiento')->nullable();
-            $table->string('FotoLicencia')->nullable();
+             $table->bigInteger('TL_id')->unsigned();
+            $table->date('FechaVencimiento');
+            $table->string('FotoLicencia');
         
 
             $table->timestamps();
             $table->foreign('departamento_id')->references('idDepartamento')->on('departamentos');
             $table->foreign('TL_id')->references('idTL')->on('tlicencias');
         });
+    
+
     }
 
     /**

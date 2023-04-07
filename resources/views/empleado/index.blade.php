@@ -72,7 +72,7 @@
 											<td>{{ $empleado->TL_id }}</td>
 											<td>{{ $empleado->FechaVencimiento }}</td>
 											<td>
-                                            <img src="{{ asset('storage/empleado/'.$empleado->FotoLicencia) }}" width="150" alt="" title="" />
+                                            <img src="{{ asset('empleado/'.$empleado->FotoLicencia) }}" width="150" alt="" title="" />
                                             </td>
 
                                             <td>

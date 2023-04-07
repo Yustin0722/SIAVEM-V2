@@ -7,8 +7,7 @@
 <body>
     <h1>{{ $title }}</h1>
     <p>{{ $date }}</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua.</p>
+    <p></p>
   
     @foreach($info as $informacion)
     <h5>Total Personas</h5>
@@ -24,8 +23,8 @@
     <span>{{ $informacion->HoraR }}</span><br>
     <h5>Lugar</h5>
     <span>{{ $informacion->Lugar }}</span><br>
-    <h5>Itinerario</h5>
-    <span>{{ $informacion->Itinerario }}</span>
+    <h5>Autorizacion</h5>
+    <span>{{ $informacion->Autorizacion }}</span>
     <br>
     @endforeach
   

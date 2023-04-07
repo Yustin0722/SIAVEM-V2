@@ -20,7 +20,7 @@
 
 </head>
 
-<body>
+<body background="images/Fondo3.jpeg">
     <div class="container">
         <br />
         <br />

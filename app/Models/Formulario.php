@@ -46,7 +46,7 @@ class Formulario extends Model
 		'HoraS' => 'required',
 		'HoraR' => 'required',
 		'Lugar' => 'required',
-		'Itinerario' => 'required',
+		
     ];
 
     protected $perPage = 20;
@@ -56,7 +56,7 @@ class Formulario extends Model
      *
      * @var array
      */
-    protected $fillable = ['idFormularios','categoria_id','depar_id','emple_id','Objetivo','NumePersonas','FechaSalida','FechaRegreso','HoraS','HoraR','Lugar','Itinerario','Observaciones','chofer', 'estado', 'placa', 'token'];
+    protected $fillable = ['idFormularios','categoria_id','depar_id','emple_id','Objetivo','NumePersonas','FechaSalida','FechaRegreso','HoraS','HoraR','Lugar','Autorizacion','Observaciones','chofer', 'estado', 'placa', 'token'];
 
 
     /**

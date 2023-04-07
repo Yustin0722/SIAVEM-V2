@@ -89,10 +89,12 @@ class FormularioController extends Controller
         if($request->Estado == 1){
             $formulario['estado'] = $request->Estado;
             $formulario['placa'] = $placa->placa;
+            $formulario['token'] = "";
             $formulario->update();
         }
         if($request->Estado == 0){
             $formulario['estado'] = $request->Estado;
+            $formulario['token'] = "";
             $formulario->update();
         }
         return redirect()->route('formularios.index')
@@ -114,15 +116,16 @@ class FormularioController extends Controller
         $request['token'] = $token;
         $formulario = Formulario::create($request->all());
         $responsable = Empleado::find($request->emple_id);
+        $departamento = Departamento::find($request->depar_id);
         $unidad = Categoria::find($request->categoria_id);
         $idFormulario = $formulario->idFormularios;
 
-        $details=[
-            'tittle' => 'Solicitud de gira',
-            'body' => "Solicitud realizada por el responsable $responsable->NombreEmple $responsable->Apellido1 $responsable->Apellido2 con el numero de cedula $responsable->Cedula, solicito la unidad $unidad->nombre, dar respuesta a la solicitud en el siguiente link $url/estado/$idFormulario/$token"
-        ];
 
-        Mail::to('yustinlopez22@gmail.com')->send(new GiraMail($details));
+        $newLink = "$url/estado/$idFormulario/$token";
+        $email = "da598298@gmail.com";
+        $messages = "Solicitud realizada por el departamento  $departamento->nombreDepa, a cargo del director $responsable->NombreEmple $responsable->Apellido1 $responsable->Apellido2 con el numero de cedula $responsable->Cedula, solicito una unidad tipo $unidad->nombre, objetivo de la gira $formulario->Objetivo, personas $formulario->NumePersonas, fechas de gira $formulario->FechaSalida 
+        hora de salida $formulario->HoraS, fecha de regreso $formulario->FechaRegreso, hora de regreso $formulario->HoraR, destino $formulario->Lugar, dar respuesta a la solicitud en el siguiente link";
+        Mail::to($email)->send(new GiraMail($email,$messages,$newLink));
 
         return redirect()->route('formularios.index')
             ->with('success', 'Solicitud enviada correctamente.');
